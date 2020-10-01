@@ -98,7 +98,6 @@ class ShowGastos extends Component
         if($continuar === true) {
             $this->iva = $this->cantidad * 0.16;
             $this->user_id = \Auth::user()->id;
-            $this->necesario === 'true' ? $this->necesario = 0 : $this->necesario = 1;
             $validatedData = $this->validate();
 
             Gasto::create($validatedData);

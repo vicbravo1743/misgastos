@@ -19,7 +19,7 @@ class CreateGastosTable extends Migration
             $table->float('cantidad');
             $table->float('iva');
             $table->enum('tipo', ['DEBITO', 'CREDITO', 'EFECTIVO']);
-            $table->boolean('necesario');
+            $table->enum('necesario', ['NECESARIO', 'INNECESARIO']);
 
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');

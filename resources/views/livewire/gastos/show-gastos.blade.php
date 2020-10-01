@@ -33,8 +33,8 @@
                             <label for="">Necesario</label>
                             <select class="form-control" wire:model="necesarioSearch">
                                 <option value="">Selecciona una opcion</option>
-                                <option value="0">Necesario</option>
-                                <option value="1">Innecesario</option>
+                                <option value="NECESARIO">Necesario</option>
+                                <option value="INNECESARIO">Innecesario</option>
                             </select>
                         </div>
                     </div>
@@ -92,9 +92,9 @@
                                     </td>
 
                                     <td>
-                                        @if($gasto->necesario == 0)
+                                        @if($gasto->necesario == 'NECESARIO')
                                             Necesario
-                                        @elseif($gasto->necesario == 1)
+                                        @elseif($gasto->necesario == 'INNECESARIO')
                                             Inncesario
                                         @endif  
                                     </td>

@@ -44,8 +44,8 @@
                     <option value="">
                         Selecciona una opcion
                     </option>
-                    <option value="true">Necesario</option>
-                    <option value="false">Innecesario</option>
+                    <option value="NECESARIO">Necesario</option>
+                    <option value="INNECESARIO">Innecesario</option>
                 </select>
                 @error('necesario')
                     <span class="text-red">
