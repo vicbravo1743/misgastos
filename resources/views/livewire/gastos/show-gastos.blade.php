@@ -40,7 +40,7 @@
                     </div>
                 </div>
 
-                <div class="card-body">
+                <div class="card-body table-responsive">
                     <table class="table table-bordered">
                         <thead>
                             <th>
@@ -95,7 +95,7 @@
                                         @if($gasto->necesario == 'NECESARIO')
                                             Necesario
                                         @elseif($gasto->necesario == 'INNECESARIO')
-                                            Inncesario
+                                            Innecesario
                                         @endif  
                                     </td>
                                 </tr>

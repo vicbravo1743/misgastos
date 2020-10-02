@@ -6,6 +6,8 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Gasto;
+use Carbon\Carbon;  
 
 class User extends Authenticatable
 {
@@ -59,5 +61,36 @@ class User extends Authenticatable
     public function scopeId($query, $id){
         if ($id)
             return $query->where('id', $id);
+    }
+
+    public function gastosDiarios() {
+        $diaActual = Carbon::now();
+
+        return Gasto::where('user_id' ,\Auth::user()->id)
+                    ->whereDate('created_at', $diaActual)
+                    ->sum('cantidad');
+
+    }
+
+    public function gastosMensuales(){
+        $mesActual = Carbon::now()->format('m');
+
+        return Gasto::where('user_id' ,\Auth::user()->id)
+                    ->whereMonth('created_at', $mesActual)
+                    ->get()
+                    ->sum('cantidad');
+    }
+
+    public function gastosTotales(){
+        return Gasto::where('user_id',  \Auth::user()->id)->sum('cantidad');
+    }
+
+    public function gastosSemanales(){
+        $primerDiaSemana = Carbon::now()->startOfWeek()->format('Y-m-d');
+        $ultimoDiaSemana = Carbon::now()->endOfWeek()->format('Y-m-d');
+
+        return Gasto::where('user_id', \Auth::user()->id)
+                        ->whereBetween('created_at', [$primerDiaSemana, $ultimoDiaSemana])
+                        ->sum('cantidad');
     }
 }

@@ -1,10 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\LiveWire\ShowUsers;
-use App\Http\LiveWire\ShowFondos;
-use App\Http\LiveWire\ShowGastos;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,6 +21,6 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Gastos
-Route::get('/usuarios', [ShowUsers::class, 'index']);
-Route::get('/fondos', [ShowFondos::class, 'index']);
-Route::get('/gastos', [ShowGastos::class, 'index']);
+Route::get('/usuarios', [App\Http\Livewire\ShowUsers::class, 'index']);
+Route::get('/fondos', [App\Http\Livewire\ShowFondos::class, 'index']);
+Route::get('/gastos', [App\Http\Livewire\ShowGastos::class, 'index']);

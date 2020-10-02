@@ -38,7 +38,7 @@ class ShowGastos extends Component
     public function render()
     {
         return view('livewire.gastos.show-gastos', [
-            'gastos'    => Gasto::orderBy('id', 'asc')
+            'gastos'    => Gasto::orderBy('id', 'desc')
                                 ->where('user_id', \Auth::user()->id)
                                 ->tipo($this->tipoSearch)
                                 ->necesario($this->necesarioSearch)
